@@ -1,1 +1,1 @@
-export { VideoTestScreen } from "./src/components/VideoTestScreen";
+export { VideoCardLayout } from "./src/layout/VideoCardLayout";

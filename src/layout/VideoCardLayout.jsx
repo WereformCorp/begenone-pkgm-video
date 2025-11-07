@@ -9,6 +9,7 @@ export const VideoCardLayout = ({
   titleText,
   userNameText,
   contentThumbUrl,
+  channelLogo,
 }) => {
   return (
     <View style={VideoCardLayoutStyles.container}>
@@ -33,7 +34,7 @@ export const VideoCardLayout = ({
       <View style={VideoCardLayoutStyles.metaData}>
         <Image
           source={{
-            uri: "https://begenone-images.s3.us-east-1.amazonaws.com/default-user-photo.jpg",
+            uri: channelLogo,
           }}
           style={VideoCardLayoutStyles.userImage}
         />

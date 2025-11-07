@@ -6,6 +6,8 @@ export const VideoCardLayout = ({
   timeAgo,
   eyeIcon,
   viewsText,
+  titleText,
+  userNameText,
 }) => {
   return (
     <View style={VideoCardLayoutStyles.container}>
@@ -42,9 +44,9 @@ export const VideoCardLayout = ({
             ]}
             numberOfLines={2}
           >
-            Master Thumbnail Design! Using Photoshop.
+            {titleText}
           </Text>
-          <Text style={VideoCardLayoutStyles.userNameText}>Areesh A.</Text>
+          <Text style={VideoCardLayoutStyles.userNameText}>{userNameText}</Text>
         </View>
       </View>
     </View>

@@ -8,13 +8,14 @@ export const VideoCardLayout = ({
   viewsText,
   titleText,
   userNameText,
+  contentThumbUrl,
 }) => {
   return (
     <View style={VideoCardLayoutStyles.container}>
       <View style={VideoCardLayoutStyles.imageWrapper}>
         <Image
           source={{
-            uri: "https://begenone-images.s3.us-east-1.amazonaws.com/let+Me+Love+you.jpg",
+            uri: { contentThumbUrl },
           }}
           style={VideoCardLayoutStyles.image}
         />

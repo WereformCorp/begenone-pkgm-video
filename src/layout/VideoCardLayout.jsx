@@ -15,7 +15,7 @@ export const VideoCardLayout = ({
       <View style={VideoCardLayoutStyles.imageWrapper}>
         <Image
           source={{
-            uri: { contentThumbUrl },
+            uri: contentThumbUrl,
           }}
           style={VideoCardLayoutStyles.image}
         />

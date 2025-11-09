@@ -2,9 +2,12 @@
   "name": "@begenone/pkgm-video",
   "version": "1.0.0",
   "private": true,
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "expo-video": "*"
+  },
   "dependencies": {
-    "@begenone/pkgm-shared": "workspace:*",
-    "react": "19.1.1",
-    "react-native": "^0.81.4"
+    "@begenone/pkgm-shared": "workspace:*"
   }
 }

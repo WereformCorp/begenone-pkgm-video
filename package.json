@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "peerDependencies": {
+    "expo-video": "*",
     "react": "*",
-    "react-native": "*",
-    "expo-video": "*"
+    "react-native": "*"
   },
   "dependencies": {
-    "@begenone/pkgm-shared": "workspace:*"
+    "@begenone/pkgm-shared": "workspace:*",
+    "@expo/vector-icons": "^15.0.3"
   }
 }

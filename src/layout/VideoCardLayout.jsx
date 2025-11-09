@@ -16,7 +16,9 @@ export const VideoCardLayout = ({
       <View style={VideoCardLayoutStyles.imageWrapper}>
         <Image
           source={{
-            uri: contentThumbUrl,
+            uri:
+              contentThumbUrl ||
+              "https://begenone-images.s3.us-east-1.amazonaws.com/let+Me+Love+you.jpg",
           }}
           style={VideoCardLayoutStyles.image}
         />
@@ -24,17 +26,23 @@ export const VideoCardLayout = ({
       <View style={VideoCardLayoutStyles.dateViewsContainer}>
         <View style={VideoCardLayoutStyles.dateContainer}>
           <View style={VideoCardLayoutStyles.dateIcon}>{calendarIcon}</View>
-          <Text style={VideoCardLayoutStyles.dateText}>{timeAgo}</Text>
+          <Text style={VideoCardLayoutStyles.dateText}>
+            {timeAgo || "14 Hours Ago"}
+          </Text>
         </View>
         <View style={VideoCardLayoutStyles.viewsContainer}>
           <View style={VideoCardLayoutStyles.eyeIcon}>{eyeIcon}</View>
-          <Text style={VideoCardLayoutStyles.viewsText}>{viewsText}</Text>
+          <Text style={VideoCardLayoutStyles.viewsText}>
+            {viewsText || "123.400"}
+          </Text>
         </View>
       </View>
       <View style={VideoCardLayoutStyles.metaData}>
         <Image
           source={{
-            uri: channelLogo,
+            uri:
+              channelLogo ||
+              "https://begenone-images.s3.us-east-1.amazonaws.com/default-user-photo.jpg",
           }}
           style={VideoCardLayoutStyles.userImage}
         />
@@ -46,9 +54,12 @@ export const VideoCardLayout = ({
             ]}
             numberOfLines={2}
           >
-            {titleText}
+            {titleText ||
+              "This is a Default Title Text in case of nothing being passed in."}
           </Text>
-          <Text style={VideoCardLayoutStyles.userNameText}>{userNameText}</Text>
+          <Text style={VideoCardLayoutStyles.userNameText}>
+            {userNameText || "Default Username"}
+          </Text>
         </View>
       </View>
     </View>

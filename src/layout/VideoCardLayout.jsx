@@ -1,5 +1,6 @@
 import { Image, Text, View } from "react-native";
 import { VideoCardLayoutStyles } from "../styles/VideoCardLayoutStyles";
+import { DateViews } from "@begenone/pkgm-shared";
 
 export const VideoCardLayout = ({
   calendarIcon,
@@ -23,20 +24,14 @@ export const VideoCardLayout = ({
           style={VideoCardLayoutStyles.image}
         />
       </View>
-      <View style={VideoCardLayoutStyles.dateViewsContainer}>
-        <View style={VideoCardLayoutStyles.dateContainer}>
-          <View style={VideoCardLayoutStyles.dateIcon}>{calendarIcon}</View>
-          <Text style={VideoCardLayoutStyles.dateText}>
-            {timeAgo || "14 Hours Ago"}
-          </Text>
-        </View>
-        <View style={VideoCardLayoutStyles.viewsContainer}>
-          <View style={VideoCardLayoutStyles.eyeIcon}>{eyeIcon}</View>
-          <Text style={VideoCardLayoutStyles.viewsText}>
-            {viewsText || "123.400"}
-          </Text>
-        </View>
-      </View>
+
+      <DateViews
+        calendarIcon={calendarIcon}
+        timeAgo={timeAgo}
+        eyeIcon={eyeIcon}
+        viewsText={viewsText}
+      />
+
       <View style={VideoCardLayoutStyles.metaData}>
         <Image
           source={{

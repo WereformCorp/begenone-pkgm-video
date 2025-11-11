@@ -19,40 +19,6 @@ export const VideoCardLayoutStyles = {
     borderRadius: globalStyles.borders.borderPrimary100,
   },
 
-  dateViewsContainer: {
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: 12,
-    paddingRight: 8,
-    paddingLeft: 8,
-  },
-
-  dateContainer: {
-    flexDirection: "row",
-    rowGap: 20,
-  },
-
-  dateIcon: {
-    marginRight: 8,
-  },
-
-  viewsContainer: {
-    flexDirection: "row",
-  },
-
-  eyeIcon: {
-    marginRight: 8,
-  },
-
-  dateText: {
-    color: globalStyles.colors.colorPrimary600,
-  },
-
-  viewsText: {
-    color: globalStyles.colors.colorPrimary600,
-  },
-
   metaData: {
     flexDirection: "row",
     marginTop: 16,

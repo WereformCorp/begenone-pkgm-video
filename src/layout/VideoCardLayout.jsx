@@ -11,9 +11,16 @@ export const VideoCardLayout = ({
   userNameText,
   contentThumbUrl,
   channelLogo,
+  containerStyles,
+  dateViewsContainerStyle,
+  userImageStyles,
+  titleNameContainerStyles,
+  userNameTextStyles,
+  titleTextStyles,
+  thumbnailImageStyles,
 }) => {
   return (
-    <View style={VideoCardLayoutStyles.container}>
+    <View style={[VideoCardLayoutStyles.container, containerStyles]}>
       <View style={VideoCardLayoutStyles.imageWrapper}>
         <Image
           source={{
@@ -21,7 +28,7 @@ export const VideoCardLayout = ({
               contentThumbUrl ||
               "https://begenone-images.s3.us-east-1.amazonaws.com/let+Me+Love+you.jpg",
           }}
-          style={VideoCardLayoutStyles.image}
+          style={[VideoCardLayoutStyles.image, thumbnailImageStyles]}
         />
       </View>
 
@@ -30,6 +37,7 @@ export const VideoCardLayout = ({
         timeAgo={timeAgo}
         eyeIcon={eyeIcon}
         viewsText={viewsText}
+        containerStyles={dateViewsContainerStyle}
       />
 
       <View style={VideoCardLayoutStyles.metaData}>
@@ -39,20 +47,28 @@ export const VideoCardLayout = ({
               channelLogo ||
               "https://begenone-images.s3.us-east-1.amazonaws.com/default-user-photo.jpg",
           }}
-          style={VideoCardLayoutStyles.userImage}
+          style={[VideoCardLayoutStyles.userImage, userImageStyles]}
         />
-        <View style={VideoCardLayoutStyles.titleNameContainer}>
+        <View
+          style={[
+            VideoCardLayoutStyles.titleNameContainer,
+            titleNameContainerStyles,
+          ]}
+        >
           <Text
             style={[
               VideoCardLayoutStyles.titleText,
               VideoCardLayoutStyles.text,
+              titleTextStyles,
             ]}
             numberOfLines={2}
           >
             {titleText ||
               "This is a Default Title Text in case of nothing being passed in."}
           </Text>
-          <Text style={VideoCardLayoutStyles.userNameText}>
+          <Text
+            style={[VideoCardLayoutStyles.userNameText, userNameTextStyles]}
+          >
             {userNameText || "Default Username"}
           </Text>
         </View>

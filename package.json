@@ -10,6 +10,7 @@
     "@expo/vector-icons": "*"
   },
   "dependencies": {
+    "@begenone/pkgm-api": "workspace:*",
     "@begenone/pkgm-shared": "workspace:*",
     "@expo/vector-icons": "^15.0.3"
   }

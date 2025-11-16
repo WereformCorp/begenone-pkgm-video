@@ -3,9 +3,7 @@ import { VideoCardLayoutStyles } from "../styles/VideoCardLayoutStyles";
 import { DateViews } from "@begenone/pkgm-shared";
 
 export const VideoCardLayout = ({
-  calendarIcon,
   timeAgo,
-  eyeIcon,
   viewsText,
   titleText,
   userNameText,
@@ -18,6 +16,7 @@ export const VideoCardLayout = ({
   userNameTextStyles,
   titleTextStyles,
   thumbnailImageStyles,
+  customMetaDataStyles,
 }) => {
   return (
     <View style={[VideoCardLayoutStyles.container, containerStyles]}>
@@ -33,14 +32,12 @@ export const VideoCardLayout = ({
       </View>
 
       <DateViews
-        calendarIcon={calendarIcon}
         timeAgo={timeAgo}
-        eyeIcon={eyeIcon}
         viewsText={viewsText}
         containerStyles={dateViewsContainerStyle}
       />
 
-      <View style={VideoCardLayoutStyles.metaData}>
+      <View style={[VideoCardLayoutStyles.metaData, customMetaDataStyles]}>
         <Image
           source={{
             uri:
@@ -56,11 +53,7 @@ export const VideoCardLayout = ({
           ]}
         >
           <Text
-            style={[
-              VideoCardLayoutStyles.titleText,
-              VideoCardLayoutStyles.text,
-              titleTextStyles,
-            ]}
+            style={[VideoCardLayoutStyles.titleText, titleTextStyles]}
             numberOfLines={2}
           >
             {titleText ||

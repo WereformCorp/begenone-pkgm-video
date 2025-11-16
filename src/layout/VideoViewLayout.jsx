@@ -22,7 +22,12 @@ export function VideoViewLayout({
   VideoCardUserNameText,
   VideoCardContentThumbUrl,
   VideoCardChannelLogo,
+  suggestedVideos,
 }) {
+  console.log(
+    "SUGGESTED VIDEOS FROM VIDEO VIEWS LAYOUT: =>\n" +
+      JSON.stringify(suggestedVideos[0].videos, null, 2)
+  );
   return (
     <ScrollView>
       <View>
@@ -82,20 +87,29 @@ export function VideoViewLayout({
         }}
       />
 
-      <View style={{ marginTop: 24 }}>
-        <VideoCardLayout
-          calendarIcon={
-            <Ionicons name="calendar-clear-outline" size={18} color="white" />
-          }
-          timeAgo={VideoCardTimeAgo}
-          eyeIcon={<Ionicons name="eye-outline" size={18} color="white" />}
-          viewsText={VideoCardViewsText}
-          titleText={VideoCardTitleText}
-          userNameText={VideoCardUserNameText}
-          contentThumbUrl={VideoCardContentThumbUrl}
-          channelLogo={VideoCardChannelLogo}
-        />
-      </View>
+      {suggestedVideos[0].videos.map(video => {
+        return (
+          <View style={{ marginTop: 24 }} key={video._id}>
+            <VideoCardLayout
+              key={video._id}
+              titleText={video.title}
+              contentThumbUrl={video.thumbUrl}
+              userNameText={video.channel?.name || "Unknown"}
+              channelLogo={video.channelLogo}
+              timeAgo={video.videoTimeAgo}
+              viewsText={String(video.views)}
+              calendarIcon={
+                <Ionicons
+                  name="calendar-clear-outline"
+                  size={18}
+                  color="white"
+                />
+              }
+              eyeIcon={<Ionicons name="eye-outline" size={18} color="white" />}
+            />
+          </View>
+        );
+      })}
     </ScrollView>
   );
 }

@@ -2,7 +2,7 @@ import { globalStyles } from "./globalStyles";
 
 export const VideoCardLayoutStyles = {
   container: {
-    // width: "100%",
+    width: "auto",
     flexDirection: "column",
     marginRight: 12,
     marginLeft: 12,

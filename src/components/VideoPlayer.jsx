@@ -2,20 +2,37 @@ import { useEvent } from "expo";
 import { useVideoPlayer, VideoView } from "expo-video";
 import { View, useWindowDimensions } from "react-native";
 import { VideoPlayerStyles } from "../styles/VideoPlayerStyles";
-
-// const videoSource =
-//   "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
+import { useCallback, useRef } from "react";
+import { useFocusEffect } from "@react-navigation/native";
 
 export function VideoPlayer({ videoSource }) {
   const { width } = useWindowDimensions(); // Dynamically get device width
-  const player = useVideoPlayer(videoSource, player => {
-    player.loop = true;
-    player.play();
+
+  const playerRef = useRef(null);
+
+  const player = useVideoPlayer(videoSource, p => {
+    p.loop = true;
+    p.play();
+    playerRef.current = p; // store instance
   });
 
-  const { isPlaying } = useEvent(player, "playingChange", {
-    isPlaying: player.playing,
-  });
+  useFocusEffect(
+    useCallback(() => {
+      if (playerRef.current) {
+        playerRef.current.play();
+      }
+
+      return () => {
+        if (playerRef.current) {
+          playerRef.current.pause();
+          // Optional: fully unload the video
+          // playerRef.current.unloadAsync?.();
+        }
+      };
+    }, [])
+  );
+
+  useEvent(player, "playingChange");
 
   return (
     <View style={VideoPlayerStyles.contentContainer}>

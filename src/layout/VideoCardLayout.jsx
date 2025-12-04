@@ -1,4 +1,4 @@
-import { Image, Text, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import { VideoCardLayoutStyles } from "../styles/VideoCardLayoutStyles";
 import { DateViews } from "@begenone/pkgm-shared";
 
@@ -17,9 +17,13 @@ export const VideoCardLayout = ({
   titleTextStyles,
   thumbnailImageStyles,
   customMetaDataStyles,
+  navigateToVideo,
 }) => {
   return (
-    <View style={[VideoCardLayoutStyles.container, containerStyles]}>
+    <TouchableOpacity
+      style={[VideoCardLayoutStyles.container, containerStyles]}
+      onPress={navigateToVideo}
+    >
       <View style={VideoCardLayoutStyles.imageWrapper}>
         <Image
           source={{
@@ -66,6 +70,6 @@ export const VideoCardLayout = ({
           </Text>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };

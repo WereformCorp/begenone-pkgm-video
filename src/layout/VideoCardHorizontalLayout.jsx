@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { Thumbnail } from "../components/Thumbnail";
 import { CustomizedTitle, DateViews } from "@begenone/pkgm-shared";
 
@@ -7,15 +7,18 @@ export function VideoCardHorizontalLayout({
   timeAgo,
   viewsText,
   titleText,
+  contentThumbUrl,
+  navigateToVideo,
 }) {
   return (
-    <View
+    <TouchableOpacity
+      onPress={navigateToVideo}
       style={{
         flexDirection: "row",
         padding: 8,
       }}
     >
-      <Thumbnail thumbHeight={90} />
+      <Thumbnail thumbHeight={90} thumbnailURL={contentThumbUrl} />
       <View style={{ flex: 1, marginLeft: 12 }}>
         <CustomizedTitle
           title={titleText || "This is a dummy text title for the video"}
@@ -44,6 +47,6 @@ export function VideoCardHorizontalLayout({
           }}
         />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }

@@ -20,7 +20,7 @@ export const VideoCardLayout = ({
   navigateToVideo,
 }) => {
   return (
-    <TouchableOpacity
+    <View
       style={[VideoCardLayoutStyles.container, containerStyles]}
       onPress={navigateToVideo}
     >
@@ -70,6 +70,6 @@ export const VideoCardLayout = ({
           </Text>
         </View>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 };

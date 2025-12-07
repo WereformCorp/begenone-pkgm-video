@@ -44,8 +44,6 @@ export function VideoViewLayout({
           paddingRight: 22,
           paddingBottom: 18,
           alignSelf: "start",
-          // borderWidth: 1,
-          // borderColor: "#FFF",
         }}
         textStyle={{
           lineHeight: 28,

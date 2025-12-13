@@ -1,6 +1,6 @@
 import { Text, TouchableOpacity, View } from "react-native";
 import { Thumbnail } from "../components/Thumbnail";
-import { CustomizedTitle, DateViews } from "@begenone/pkgm-shared";
+import { CustomizedTitle, DateViews } from "@wereform/pkgm-shared";
 
 export function VideoCardHorizontalLayout({
   eyeIcon,

@@ -1,6 +1,6 @@
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { VideoCardLayoutStyles } from "../styles/VideoCardLayoutStyles";
-import { DateViews } from "@begenone/pkgm-shared";
+import { DateViews } from "@wereform/pkgm-shared";
 
 export const VideoCardLayout = ({
   timeAgo,

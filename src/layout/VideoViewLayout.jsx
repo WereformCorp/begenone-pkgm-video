@@ -4,7 +4,7 @@ import {
   CustomizedTitle,
   MenuChannelMeta,
   MenuInteraction,
-} from "@begenone/pkgm-shared";
+} from "@wereform/pkgm-shared";
 import { Ionicons } from "@expo/vector-icons";
 import { VideoCardLayout } from "./VideoCardLayout";
 
@@ -16,12 +16,6 @@ export function VideoViewLayout({
   MenuChannelMetaUserName,
   MenuChannelMetaSubCount,
   MenuChannelMetaChannelLogo,
-  VideoCardTimeAgo,
-  VideoCardViewsText,
-  VideoCardTitleText,
-  VideoCardUserNameText,
-  VideoCardContentThumbUrl,
-  VideoCardChannelLogo,
   suggestedVideos,
 }) {
   console.log(

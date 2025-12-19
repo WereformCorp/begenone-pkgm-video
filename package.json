@@ -2,6 +2,10 @@
   "name": "@wereform/pkgm-video",
   "version": "1.0.1",
   "main": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "build": "babel src --out-dir dist --extensions .js,.jsx"
   },
@@ -16,8 +20,8 @@
     "react-native": "*"
   },
   "dependencies": {
-    "@wereform/pkgm-api": "^1.0.0",
-    "@wereform/pkgm-shared": "^1.0.0",
+    "@wereform/pkgm-api": "^1.0.7",
+    "@wereform/pkgm-shared": "^1.0.2",
     "@expo/vector-icons": "^15.0.3"
   },
   "devDependencies": {

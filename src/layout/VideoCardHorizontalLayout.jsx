@@ -2,6 +2,25 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { Thumbnail } from "../components/Thumbnail";
 import { CustomizedTitle, DateViews } from "@wereform/pkgm-shared";
 
+/**
+ * VideoCardHorizontalLayout
+ *
+ * Compact horizontal video card used in lists or history views.
+ * Displays thumbnail, title, and basic metadata (date + views).
+ *
+ * Props:
+ * - eyeIcon: ReactNode for views icon
+ * - timeAgo: string representing publish time
+ * - viewsText: string/number of views
+ * - titleText: video title
+ * - contentThumbUrl: thumbnail image URL
+ * - navigateToVideo: navigation handler on press
+ *
+ * Notes:
+ * - Entire card is pressable
+ * - Uses shared UI components for consistency
+ */
+
 export function VideoCardHorizontalLayout({
   eyeIcon,
   timeAgo,

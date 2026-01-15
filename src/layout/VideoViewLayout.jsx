@@ -8,6 +8,29 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { VideoCardLayout } from "./VideoCardLayout";
 
+/**
+ * VideoViewLayout
+ *
+ * Full video viewing screen layout.
+ * Renders video player, title, interactions, channel metadata,
+ * and a list of suggested videos.
+ *
+ * Props:
+ * - videoSource: video stream/source
+ * - CustomizedTitleText: main video title
+ * - MenuChannelMetaTimeAgo: publish time
+ * - MenuChannelMetaViews: view count
+ * - MenuChannelMetaUserName: channel name
+ * - MenuChannelMetaSubCount: subscriber count
+ * - MenuChannelMetaChannelLogo: channel avatar
+ * - suggestedVideos: array of related video objects
+ *
+ * Notes:
+ * - Suggested videos are rendered using VideoCardLayout
+ * - Layout is scrollable and mobile-optimized
+ * - Interaction icons are visual; behavior is wired elsewhere
+ */
+
 export function VideoViewLayout({
   videoSource,
   CustomizedTitleText,
@@ -52,13 +75,13 @@ export function VideoViewLayout({
         shareIcon={
           <Ionicons name="arrow-redo-outline" size={24} color="white" />
         }
-        commentIcon={
-          <Ionicons
-            name="chatbubble-ellipses-outline"
-            size={24}
-            color="white"
-          />
-        }
+        // commentIcon={
+        //   <Ionicons
+        //     name="chatbubble-ellipses-outline"
+        //     size={24}
+        //     color="white"
+        //   />
+        // }
         containerStyles={{
           marginLeft: 12,
         }}

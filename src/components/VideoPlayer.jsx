@@ -5,6 +5,26 @@ import { VideoPlayerStyles } from "../styles/VideoPlayerStyles";
 import { useCallback, useRef } from "react";
 import { useFocusEffect } from "@react-navigation/native";
 
+/**
+ * VideoPlayer
+ *
+ * Mobile-optimized video playback component using expo-video.
+ *
+ * Props:
+ * - videoSource: video URI or source object compatible with useVideoPlayer
+ *
+ * Behavior:
+ * - Auto-plays and loops video on mount
+ * - Resumes playback when screen gains focus
+ * - Pauses playback when screen loses focus
+ * - Maintains responsive 16:9 aspect ratio based on device width
+ *
+ * Notes:
+ * - Player instance is stored via ref for lifecycle control
+ * - Picture-in-picture is enabled
+ * - Designed for full video view screens
+ */
+
 export function VideoPlayer({ videoSource }) {
   const { width } = useWindowDimensions(); // Dynamically get device width
 

@@ -1,16 +1,19 @@
 import { StyleSheet } from "react-native";
 
+/* Video player layout and control styles */
 export const VideoPlayerStyles = StyleSheet.create({
   contentContainer: {
-    // flex: 1,
+    // Player content wrapper
     alignItems: "center",
     justifyContent: "flex-start",
-    // backgroundColor: "#000",
   },
+
   video: {
-    // borderRadius: 10,
+    // Video element styling
   },
+
   controlsContainer: {
+    // Playback controls container
     padding: 10,
   },
 });

@@ -2,8 +2,8 @@ import { useEvent } from "expo";
 import { useVideoPlayer, VideoView } from "expo-video";
 import { View, useWindowDimensions } from "react-native";
 import { VideoPlayerStyles } from "../styles/VideoPlayerStyles";
-import { useCallback, useRef } from "react";
-import { useFocusEffect } from "@react-navigation/native";
+import { useCallback, useEffect, useRef } from "react";
+import { useIsFocused, useFocusEffect } from "@react-navigation/native";
 
 /**
  * VideoPlayer
@@ -27,6 +27,7 @@ import { useFocusEffect } from "@react-navigation/native";
 
 export function VideoPlayer({ videoSource }) {
   const { width } = useWindowDimensions(); // Dynamically get device width
+  const isFocused = useIsFocused();
 
   const playerRef = useRef(null);
 
@@ -36,21 +37,12 @@ export function VideoPlayer({ videoSource }) {
     playerRef.current = p; // store instance
   });
 
-  useFocusEffect(
-    useCallback(() => {
-      if (playerRef.current) {
-        playerRef.current.play();
-      }
+  useEffect(() => {
+    if (!player) return;
 
-      return () => {
-        if (playerRef.current) {
-          playerRef.current.pause();
-          // Optional: fully unload the video
-          // playerRef.current.unloadAsync?.();
-        }
-      };
-    }, [])
-  );
+    if (isFocused) player.play();
+    else player.pause();
+  }, [isFocused, player]);
 
   useEvent(player, "playingChange");
 

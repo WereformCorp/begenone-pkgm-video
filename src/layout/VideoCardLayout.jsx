@@ -38,6 +38,7 @@ export const VideoCardLayout = ({
   customMetaDataStyles,
   navigateToVideo,
 }) => {
+  console.log("Checking for Conent Thumbnail URL: ", contentThumbUrl);
   return (
     <View
       style={[VideoCardLayoutStyles.container, containerStyles]}

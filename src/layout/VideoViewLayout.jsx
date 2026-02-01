@@ -43,12 +43,12 @@ export function VideoViewLayout({
 }) {
   console.log(
     "SUGGESTED VIDEOS FROM VIDEO VIEWS LAYOUT: =>\n" +
-      JSON.stringify(suggestedVideos[0].videos, null, 2)
+      JSON.stringify(suggestedVideos[0].videos, null, 2),
   );
   return (
     <ScrollView>
       <View>
-        <VideoPlayer videoSource={videoSource} />
+        <VideoPlayer key={videoSource} videoSource={videoSource} />
       </View>
       <CustomizedTitle
         title={CustomizedTitleText}

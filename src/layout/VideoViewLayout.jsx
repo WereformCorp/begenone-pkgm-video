@@ -40,11 +40,13 @@ export function VideoViewLayout({
   MenuChannelMetaSubCount,
   MenuChannelMetaChannelLogo,
   suggestedVideos,
+  CLOUDFRONTURL,
 }) {
   console.log(
     "SUGGESTED VIDEOS FROM VIDEO VIEWS LAYOUT: =>\n" +
       JSON.stringify(suggestedVideos[0].videos, null, 2),
   );
+
   return (
     <ScrollView>
       <View>
@@ -108,7 +110,7 @@ export function VideoViewLayout({
             <VideoCardLayout
               key={video._id}
               titleText={video.title}
-              contentThumbUrl={video.thumbUrl}
+              contentThumbUrl={`${CLOUDFRONTURL}/${video.thumbUrl}`}
               userNameText={video.channel?.name || "Unknown"}
               channelLogo={video.channelLogo}
               timeAgo={video.videoTimeAgo}

@@ -110,7 +110,7 @@ export function VideoViewLayout({
             <VideoCardLayout
               key={video._id}
               titleText={video.title}
-              contentThumbUrl={`${CLOUDFRONTURL}/${video.thumbUrl}`}
+              contentThumbUrl={`${CLOUDFRONTURL}/${video.thumbnail}`}
               userNameText={video.channel?.name || "Unknown"}
               channelLogo={video.channelLogo}
               timeAgo={video.videoTimeAgo}

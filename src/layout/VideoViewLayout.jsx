@@ -47,17 +47,6 @@ export function VideoViewLayout({
 
   navigateToVideo,
 }) {
-  console.log(
-    "SUGGESTED VIDEOS FROM VIDEO VIEWS LAYOUT: =>\n",
-    suggestedVideos[0].videos,
-    null,
-    2,
-  );
-
-  if (!suggestedVideos?.data || !Array.isArray(suggestedVideos.data.videos)) {
-    return;
-  }
-
   return (
     <ScrollView style={{ position: "relative" }}>
       <View>

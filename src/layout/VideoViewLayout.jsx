@@ -1,4 +1,4 @@
-import { ScrollView, View } from "react-native";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { VideoPlayer } from "../components/VideoPlayer";
 import {
   CustomizedTitle,
@@ -41,14 +41,21 @@ export function VideoViewLayout({
   MenuChannelMetaChannelLogo,
   suggestedVideos,
   CLOUDFRONTURL,
+
+  canDelete,
+  onDelete,
+
+  navigateToVideo,
 }) {
   console.log(
-    "SUGGESTED VIDEOS FROM VIDEO VIEWS LAYOUT: =>\n" +
-      JSON.stringify(suggestedVideos[0].videos, null, 2),
+    "SUGGESTED VIDEOS FROM VIDEO VIEWS LAYOUT: =>\n",
+    suggestedVideos[0].videos,
+    null,
+    2,
   );
 
   return (
-    <ScrollView>
+    <ScrollView style={{ position: "relative" }}>
       <View>
         <VideoPlayer key={videoSource} videoSource={videoSource} />
       </View>
@@ -70,13 +77,13 @@ export function VideoViewLayout({
       />
 
       <MenuInteraction
-        likeIcon={<Ionicons name="thumbs-up-outline" size={24} color="white" />}
-        dislikeIcon={
-          <Ionicons name="thumbs-down-outline" size={24} color="white" />
-        }
-        shareIcon={
-          <Ionicons name="arrow-redo-outline" size={24} color="white" />
-        }
+        // likeIcon={<Ionicons name="thumbs-up-outline" size={24} color="white" />}
+        // dislikeIcon={
+        //   <Ionicons name="thumbs-down-outline" size={24} color="white" />
+        // }
+        // shareIcon={
+        //   <Ionicons name="arrow-redo-outline" size={24} color="white" />
+        // }
         // commentIcon={
         //   <Ionicons
         //     name="chatbubble-ellipses-outline"
@@ -84,6 +91,10 @@ export function VideoViewLayout({
         //     color="white"
         //   />
         // }
+
+        pressed={() => {}}
+        canDelete={canDelete}
+        onDelete={onDelete}
         containerStyles={{
           marginLeft: 12,
         }}
@@ -104,9 +115,13 @@ export function VideoViewLayout({
         }}
       />
 
-      {suggestedVideos[0].videos.map(video => {
-        return (
-          <View style={{ marginTop: 24 }} key={video._id}>
+      {Array.isArray(suggestedVideos?.[0]?.videos) ? (
+        suggestedVideos[0].videos.map(video => (
+          <TouchableOpacity
+            key={video._id}
+            onPress={() => navigateToVideo(video._id)}
+            style={{ marginTop: 24 }}
+          >
             <VideoCardLayout
               key={video._id}
               titleText={video.title}
@@ -124,9 +139,13 @@ export function VideoViewLayout({
               }
               eyeIcon={<Ionicons name="eye-outline" size={18} color="white" />}
             />
-          </View>
-        );
-      })}
+          </TouchableOpacity>
+        ))
+      ) : (
+        <Text style={{ color: "#999", marginTop: 24 }}>
+          No suggested videos yet
+        </Text>
+      )}
     </ScrollView>
   );
 }

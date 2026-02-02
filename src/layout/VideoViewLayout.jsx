@@ -55,12 +55,7 @@ export function VideoViewLayout({
   );
 
   if (!suggestedVideos?.data || !Array.isArray(suggestedVideos.data.videos)) {
-    return (
-      <ScreenWrapper>
-        <StatusBar style="light" />
-        <ActivityIndicator />
-      </ScreenWrapper>
-    );
+    return;
   }
 
   return (

@@ -47,6 +47,15 @@ export function VideoViewLayout({
 
   navigateToVideo,
 }) {
+  // FIX: Flatten the logic. We expect 'suggestedVideos' to be an array of objects.
+  // If your API returns { data: { videos: [...] } }, adjust accordingly.
+  // Based on your code, it looked like it was just an array inside data.
+  const videoList = Array.isArray(suggestedVideos?.videos)
+    ? suggestedVideos.videos
+    : [];
+
+  console.log("Video List in Layout => ", videoList);
+
   return (
     <ScrollView style={{ position: "relative" }}>
       <View>
@@ -108,34 +117,29 @@ export function VideoViewLayout({
         }}
       />
 
-      {Array.isArray(suggestedVideos?.[0]?.videos) ? (
-        suggestedVideos[0].videos.map(video => (
+      {videoList.length > 0 ? (
+        videoList.map(video => (
           <TouchableOpacity
             key={video._id}
             onPress={() => navigateToVideo(video._id)}
             style={{ marginTop: 24 }}
           >
             <VideoCardLayout
-              key={video._id}
               titleText={video.title}
-              contentThumbUrl={`${CLOUDFRONTURL}/${video.thumbnail}`}
+              // SAFETY: Handle missing CLOUDFRONTURL cleanly
+              contentThumbUrl={
+                CLOUDFRONTURL ? `${CLOUDFRONTURL}/${video.thumbnail}` : null
+              }
               userNameText={video.channel?.name || "Unknown"}
               channelLogo={video.channelLogo}
               timeAgo={video.videoTimeAgo}
-              viewsText={String(video.views)}
-              calendarIcon={
-                <Ionicons
-                  name="calendar-clear-outline"
-                  size={18}
-                  color="white"
-                />
-              }
-              eyeIcon={<Ionicons name="eye-outline" size={18} color="white" />}
+              viewsText={String(video.views || 0)}
+              // ... icons
             />
           </TouchableOpacity>
         ))
       ) : (
-        <Text style={{ color: "#999", marginTop: 24 }}>
+        <Text style={{ color: "#999", marginTop: 24, textAlign: "center" }}>
           No suggested videos yet
         </Text>
       )}

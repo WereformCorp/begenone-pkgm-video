@@ -54,10 +54,19 @@ export function VideoViewLayout({
     2,
   );
 
+  if (!suggestedVideos?.data || !Array.isArray(suggestedVideos.data.videos)) {
+    return (
+      <ScreenWrapper>
+        <StatusBar style="light" />
+        <ActivityIndicator />
+      </ScreenWrapper>
+    );
+  }
+
   return (
     <ScrollView style={{ position: "relative" }}>
       <View>
-        <VideoPlayer key={videoSource} videoSource={videoSource} />
+        <VideoPlayer videoSource={videoSource} />
       </View>
       <CustomizedTitle
         title={CustomizedTitleText}

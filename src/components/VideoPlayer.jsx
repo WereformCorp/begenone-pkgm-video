@@ -26,6 +26,10 @@ import { useIsFocused, useFocusEffect } from "@react-navigation/native";
  */
 
 export function VideoPlayer({ videoSource }) {
+  if (!videoSource || typeof videoSource !== "string") {
+    return null;
+  }
+
   const { width } = useWindowDimensions(); // Dynamically get device width
   const isFocused = useIsFocused();
 

@@ -1,6 +1,6 @@
 {
   "name": "@wereform/pkgm-video",
-  "version": "1.0.15",
+  "version": "1.0.14",
   "source": "dist/index.js",
   "main": "dist/index.js",
   "react-native": "dist/index.js",

@@ -26,43 +26,82 @@ import { useIsFocused, useFocusEffect } from "@react-navigation/native";
  */
 
 export function VideoPlayer({ videoSource }) {
-  const { width } = useWindowDimensions();
-  const isFocused = useIsFocused();
+  // const { width } = useWindowDimensions();
+  // const isFocused = useIsFocused();
+  // const playerRef = useRef(null);
+
+  // // SAFETY: If source is invalid, don't crash native hook
+  // const safeSource =
+  //   typeof videoSource === "string" && videoSource.startsWith("http")
+  //     ? videoSource
+  //     : null;
+
+  // const player = useVideoPlayer(safeSource, p => {
+  //   p.loop = true;
+  //   p.play();
+  //   playerRef.current = p; // store instance
+  // });
+
+  // useEffect(() => {
+  //   if (!player) return;
+  //   if (isFocused) player.play();
+  //   else player.pause();
+  // }, [isFocused, player]);
+
+  // // SAFETY: Return empty view if no player (prevents native crash)
+  // if (!safeSource || !player) {
+  //   return (
+  //     <View
+  //       style={[
+  //         VideoPlayerStyles.contentContainer,
+  //         { width, height: width * (9 / 16), backgroundColor: "#000" },
+  //       ]}
+  //     >
+  //       <Text style={{ color: "white", textAlign: "center", marginTop: 20 }}>
+  //         Loading Video...
+  //       </Text>
+  //     </View>
+  //   );
+  // }
+
+  // useEvent(player, "playingChange");
+
+  // return (
+  //   <View style={VideoPlayerStyles.contentContainer}>
+  //     <VideoView
+  //       style={[VideoPlayerStyles.video, { width, height: width * (9 / 16) }]} // 16:9 ratio
+  //       player={player}
+  //       // allowsFullscreen
+  //       allowsPictureInPicture
+  //     />
+  //   </View>
+  // );
+
+  const { width } = useWindowDimensions(); // Dynamically get device width
+
   const playerRef = useRef(null);
 
-  // SAFETY: If source is invalid, don't crash native hook
-  const safeSource =
-    typeof videoSource === "string" && videoSource.startsWith("http")
-      ? videoSource
-      : null;
-
-  const player = useVideoPlayer(safeSource, p => {
+  const player = useVideoPlayer(videoSource, p => {
     p.loop = true;
     p.play();
     playerRef.current = p; // store instance
   });
 
-  useEffect(() => {
-    if (!player) return;
-    if (isFocused) player.play();
-    else player.pause();
-  }, [isFocused, player]);
+  useFocusEffect(
+    useCallback(() => {
+      if (playerRef.current) {
+        playerRef.current.play();
+      }
 
-  // SAFETY: Return empty view if no player (prevents native crash)
-  if (!safeSource || !player) {
-    return (
-      <View
-        style={[
-          VideoPlayerStyles.contentContainer,
-          { width, height: width * (9 / 16), backgroundColor: "#000" },
-        ]}
-      >
-        <Text style={{ color: "white", textAlign: "center", marginTop: 20 }}>
-          Loading Video...
-        </Text>
-      </View>
-    );
-  }
+      return () => {
+        if (playerRef.current) {
+          playerRef.current.pause();
+          // Optional: fully unload the video
+          // playerRef.current.unloadAsync?.();
+        }
+      };
+    }, []),
+  );
 
   useEvent(player, "playingChange");
 

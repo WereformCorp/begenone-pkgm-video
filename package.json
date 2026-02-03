@@ -1,6 +1,6 @@
 {
   "name": "@wereform/pkgm-video",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "source": "dist/index.js",
   "main": "dist/index.js",
   "react-native": "dist/index.js",
@@ -24,9 +24,10 @@
     "react-native": "*"
   },
   "dependencies": {
+    "@expo/vector-icons": "^15.0.3",
     "@wereform/pkgm-api": "^1.0.11",
     "@wereform/pkgm-shared": "^1.0.7",
-    "@expo/vector-icons": "^15.0.3"
+    "@wereform/pkgm-video": "link:"
   },
   "devDependencies": {
     "@babel/cli": "^7.28.3",

@@ -1,6 +1,6 @@
 import { useEvent } from "expo";
 import { useVideoPlayer, VideoView } from "expo-video";
-import { View, useWindowDimensions } from "react-native";
+import { Text, View, useWindowDimensions } from "react-native";
 import { VideoPlayerStyles } from "../styles/VideoPlayerStyles";
 import { useCallback, useEffect, useRef } from "react";
 import { useIsFocused, useFocusEffect } from "@react-navigation/native";

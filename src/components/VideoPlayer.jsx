@@ -1,12 +1,26 @@
 import { useEvent } from "expo";
 import { useVideoPlayer, VideoView } from "expo-video";
-import { View, useWindowDimensions } from "react-native";
+import {
+  ActivityIndicator,
+  Text,
+  View,
+  useWindowDimensions,
+} from "react-native";
 import { VideoPlayerStyles } from "../styles/VideoPlayerStyles";
 import { useCallback, useEffect, useRef } from "react";
 import { useFocusEffect } from "@react-navigation/native";
 
 export function VideoPlayer({ videoSource }) {
   const { width } = useWindowDimensions(); // Dynamically get device width
+
+  console.log("Video Source in Player => ", videoSource);
+
+  if (!videoSource || typeof videoSource !== "string" || /\s/.test(videoSource))
+    return (
+      <View style={VideoPlayerStyles.contentContainer}>
+        <ActivityIndicator size="large" color="#999" />
+      </View>
+    );
 
   const player = useVideoPlayer(videoSource, playerInstance => {
     playerInstance.loop = false;

@@ -21,7 +21,7 @@ import { DateViews } from "@wereform/pkgm-shared";
  * - Uses shared UI components for consistency
  */
 
-export const VideoCardLayout = ({
+export function VideoCardLayout({
   timeAgo,
   viewsText,
   titleText,
@@ -37,7 +37,7 @@ export const VideoCardLayout = ({
   thumbnailImageStyles,
   customMetaDataStyles,
   navigateToVideo,
-}) => {
+}) {
   console.log("Checking for Conent Thumbnail URL: ", contentThumbUrl);
   return (
     <View
@@ -92,4 +92,4 @@ export const VideoCardLayout = ({
       </View>
     </View>
   );
-};
+}

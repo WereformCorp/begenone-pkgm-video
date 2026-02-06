@@ -56,6 +56,17 @@ export function VideoViewLayout({
 
   console.log("Video List in Layout => ", videoList);
 
+  console.log(`CloudFRONT URL from Video View Layout: `, CLOUDFRONTURL);
+
+  console.log("📅 MenuChannelMeta.timeAgo:", MenuChannelMetaTimeAgo);
+  console.log("👁️ MenuChannelMeta.viewsText:", MenuChannelMetaViews);
+  console.log("👤 MenuChannelMeta.userName:", MenuChannelMetaUserName);
+  console.log("📣 MenuChannelMeta.subscribersCount:", MenuChannelMetaSubCount);
+  console.log("🖼️ MenuChannelMeta.channelLogo:", MenuChannelMetaChannelLogo);
+  console.log("🎨 MenuChannelMeta.containerStyles:", {
+    marginTop: 12,
+  });
+
   return (
     <ScrollView style={{ position: "relative" }}>
       <View>

@@ -1,5 +1,5 @@
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
-import { VideoPlayer } from "../components/VideoPlayer";
+// import { VideoPlayer } from "../components/VideoPlayer";
 import {
   CustomizedTitle,
   MenuChannelMeta,
@@ -44,7 +44,7 @@ export function VideoViewLayout({
 
   canDelete,
   onDelete,
-
+  // VideoPlayer,
   navigateToVideo,
 }) {
   // FIX: Flatten the logic. We expect 'suggestedVideos' to be an array of objects.
@@ -69,9 +69,11 @@ export function VideoViewLayout({
 
   return (
     <ScrollView style={{ position: "relative" }}>
-      <View>
+      {/* <View>
         <VideoPlayer videoSource={videoSource} />
-      </View>
+      </View> */}
+
+      {/* {VideoPlayer} */}
       <CustomizedTitle
         title={CustomizedTitleText}
         fontSize={22}

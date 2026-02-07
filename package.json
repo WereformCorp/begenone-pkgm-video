@@ -1,9 +1,9 @@
 {
   "name": "@wereform/pkgm-video",
-  "version": "1.0.21",
-  "source": "dist/index.js",
-  "main": "dist/index.js",
-  "react-native": "dist/index.js",
+  "version": "1.0.22",
+  "source": "src/index.js",
+  "main": "src/index.js",
+  "react-native": "src/index.js",
   "files": [
     "dist",
     "src",
@@ -26,7 +26,7 @@
     "@wereform/pkgm-api": "^1.0.13",
     "@wereform/pkgm-shared": "^1.0.8",
     "expo": "^54.0.33",
-    "expo-video": "~3.0.15"
+    "expo-video": "^3.0.15"
   },
   "devDependencies": {
     "@babel/cli": "^7.28.3",

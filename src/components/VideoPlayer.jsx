@@ -1,4 +1,3 @@
-import { useEvent } from "expo";
 import { useVideoPlayer, VideoView } from "expo-video";
 import {
   ActivityIndicator,

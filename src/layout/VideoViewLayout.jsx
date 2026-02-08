@@ -32,7 +32,6 @@ import { VideoCardLayout } from "./VideoCardLayout";
  */
 
 export function VideoViewLayout({
-  videoSource,
   CustomizedTitleText,
   MenuChannelMetaTimeAgo,
   MenuChannelMetaViews,
@@ -44,7 +43,6 @@ export function VideoViewLayout({
 
   canDelete,
   onDelete,
-  // VideoPlayer,
   navigateToVideo,
 }) {
   // FIX: Flatten the logic. We expect 'suggestedVideos' to be an array of objects.
@@ -54,26 +52,8 @@ export function VideoViewLayout({
     ? suggestedVideos.videos
     : [];
 
-  console.log("Video List in Layout => ", videoList);
-
-  console.log(`CloudFRONT URL from Video View Layout: `, CLOUDFRONTURL);
-
-  console.log("📅 MenuChannelMeta.timeAgo:", MenuChannelMetaTimeAgo);
-  console.log("👁️ MenuChannelMeta.viewsText:", MenuChannelMetaViews);
-  console.log("👤 MenuChannelMeta.userName:", MenuChannelMetaUserName);
-  console.log("📣 MenuChannelMeta.subscribersCount:", MenuChannelMetaSubCount);
-  console.log("🖼️ MenuChannelMeta.channelLogo:", MenuChannelMetaChannelLogo);
-  console.log("🎨 MenuChannelMeta.containerStyles:", {
-    marginTop: 12,
-  });
-
   return (
     <ScrollView style={{ position: "relative" }}>
-      {/* <View>
-        <VideoPlayer videoSource={videoSource} />
-      </View> */}
-
-      {/* {VideoPlayer} */}
       <CustomizedTitle
         title={CustomizedTitleText}
         fontSize={22}
@@ -92,21 +72,6 @@ export function VideoViewLayout({
       />
 
       <MenuInteraction
-        // likeIcon={<Ionicons name="thumbs-up-outline" size={24} color="white" />}
-        // dislikeIcon={
-        //   <Ionicons name="thumbs-down-outline" size={24} color="white" />
-        // }
-        // shareIcon={
-        //   <Ionicons name="arrow-redo-outline" size={24} color="white" />
-        // }
-        // commentIcon={
-        //   <Ionicons
-        //     name="chatbubble-ellipses-outline"
-        //     size={24}
-        //     color="white"
-        //   />
-        // }
-
         pressed={() => {}}
         canDelete={canDelete}
         onDelete={onDelete}

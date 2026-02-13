@@ -1,4 +1,4 @@
-import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 // import { VideoPlayer } from "../components/VideoPlayer";
 import {
   CustomizedTitle,
@@ -33,6 +33,7 @@ import { VideoCardLayout } from "./VideoCardLayout";
 
 export function VideoViewLayout({
   CustomizedTitleText,
+  CustomizedTitleDescription,
   MenuChannelMetaTimeAgo,
   MenuChannelMetaViews,
   MenuChannelMetaUserName,
@@ -44,6 +45,16 @@ export function VideoViewLayout({
   canDelete,
   onDelete,
   navigateToVideo,
+
+  initialLiked,
+  initialDisliked,
+  likesCount = 0,
+  dislikesCount = 0,
+  onLike,
+  onDislike,
+  onShare,
+  onComment,
+  onRepost,
 }) {
   // FIX: Flatten the logic. We expect 'suggestedVideos' to be an array of objects.
   // If your API returns { data: { videos: [...] } }, adjust accordingly.
@@ -53,21 +64,22 @@ export function VideoViewLayout({
     : [];
 
   return (
-    <ScrollView style={{ position: "relative" }}>
+    <ScrollView style={{ position: "relative", marginBottom: 96 }}>
       <CustomizedTitle
         title={CustomizedTitleText}
-        fontSize={22}
+        description={CustomizedTitleDescription}
+        fontSize={20}
         fontFamily="Inter"
         textColor="white"
         style={{
           paddingTop: 18,
           paddingLeft: 22,
           paddingRight: 22,
-          paddingBottom: 18,
-          alignSelf: "start",
+          paddingBottom: 12,
+          alignSelf: "stretch",
         }}
         textStyle={{
-          lineHeight: 28,
+          lineHeight: 26,
         }}
       />
 
@@ -78,6 +90,15 @@ export function VideoViewLayout({
         containerStyles={{
           marginLeft: 12,
         }}
+        initialLiked={initialLiked}
+        initialDisliked={initialDisliked}
+        likesCount={likesCount}
+        dislikesCount={dislikesCount}
+        onLike={onLike}
+        onDislike={onDislike}
+        onShare={onShare}
+        onComment={onComment}
+        onRepost={onRepost}
       />
 
       <MenuChannelMeta
@@ -97,24 +118,17 @@ export function VideoViewLayout({
 
       {videoList.length > 0 ? (
         videoList.map(video => (
-          <TouchableOpacity
+          <VideoCardLayout
             key={video._id}
             onPress={() => navigateToVideo(video._id)}
-            style={{ marginTop: 24 }}
-          >
-            <VideoCardLayout
-              titleText={video.title}
-              // SAFETY: Handle missing CLOUDFRONTURL cleanly
-              contentThumbUrl={
-                CLOUDFRONTURL ? `${CLOUDFRONTURL}/${video.thumbnail}` : null
-              }
-              userNameText={video.channel?.name || "Unknown"}
-              channelLogo={video.channelLogo}
-              timeAgo={video.videoTimeAgo}
-              viewsText={String(video.views || 0)}
-              // ... icons
-            />
-          </TouchableOpacity>
+            titleText={video.title}
+            contentThumbUrl={
+              CLOUDFRONTURL ? `${CLOUDFRONTURL}/${video.thumbnail}` : null
+            }
+            userNameText={video.channel?.name || "Unknown"}
+            timeAgo={video.videoTimeAgo}
+            viewsText={String(video.views || 0)}
+          />
         ))
       ) : (
         <Text style={{ color: "#999", marginTop: 24, textAlign: "center" }}>

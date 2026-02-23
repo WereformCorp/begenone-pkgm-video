@@ -55,6 +55,15 @@ export function VideoViewLayout({
   onShare,
   onComment,
   onRepost,
+  navigateToChannel,
+  channelId,
+
+  commentSheetVisible,
+  onCloseCommentSheet,
+  comments = [],
+  commentsLoading = false,
+  onSubmitComment,
+  renderCommentItem,
 }) {
   // FIX: Flatten the logic. We expect 'suggestedVideos' to be an array of objects.
   // If your API returns { data: { videos: [...] } }, adjust accordingly.
@@ -99,6 +108,12 @@ export function VideoViewLayout({
         onShare={onShare}
         onComment={onComment}
         onRepost={onRepost}
+        commentSheetVisible={commentSheetVisible}
+        onCloseCommentSheet={onCloseCommentSheet}
+        comments={comments}
+        commentsLoading={commentsLoading}
+        onSubmitComment={onSubmitComment}
+        renderCommentItem={renderCommentItem}
       />
 
       <MenuChannelMeta
@@ -111,6 +126,7 @@ export function VideoViewLayout({
         userName={MenuChannelMetaUserName}
         subscribersCount={MenuChannelMetaSubCount}
         channelLogo={MenuChannelMetaChannelLogo}
+        onChannelPress={navigateToChannel && channelId ? () => navigateToChannel(channelId) : undefined}
         containerStyles={{
           marginTop: 12,
         }}

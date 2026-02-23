@@ -1,0 +1,56 @@
+%% begenone-pkgm-video — Sequence Diagrams
+%% Mermaid.js format (.mmd) — use --- to separate multiple diagrams
+%% Video layouts use pkgm-shared (CustomizedTitle, MenuChannelMeta, MenuInteraction) and render VideoCardLayout
+
+%% 1. VIDEO VIEW LAYOUT — Composition & interaction flow
+sequenceDiagram
+    autonumber
+    participant Parent as Parent (e.g. VideoPlayingScreen)
+    participant VVL as VideoViewLayout
+    participant Shared as pkgm-shared (CustomizedTitle, MenuInteraction, MenuChannelMeta)
+    participant VideoCard as VideoCardLayout
+
+    Parent->>VVL: props (title, description, meta, suggestedVideos, onLike, onShare, onComment, commentSheetVisible, comments, renderCommentItem, ...)
+
+    VVL->>VVL: videoList = suggestedVideos?.videos ?? []
+
+    VVL->>Shared: CustomizedTitle (title, description)
+    VVL->>Shared: MenuInteraction (like, dislike, share, comment, repost, commentSheetVisible, comments, renderCommentItem)
+    VVL->>Shared: MenuChannelMeta (timeAgo, views, userName, subCount, channelLogo, navigateToChannel)
+    VVL->>VideoCard: map videoList → VideoCardLayout (titleText, userNameText, contentThumbUrl, onPress/navigateToVideo)
+
+    User->>Shared: tap Like / Dislike / Share / Comment / Repost
+    Shared->>Parent: onLike() / onDislike() / onShare() / onComment() / onRepost()
+
+    User->>VideoCard: tap card
+    VideoCard->>Parent: onPress(video) / navigateToVideo(video._id)
+
+---
+%% 2. VIDEO CARD LAYOUT — Press & navigation
+sequenceDiagram
+    autonumber
+    participant Parent
+    participant Card as VideoCardLayout
+
+    Parent->>Card: props (titleText, userNameText, contentThumbUrl, channelLogo, timeAgo, viewsText, onPress, navigateToVideo)
+
+    Card->>Card: handlePress = onPress ?? navigateToVideo
+    Card->>Card: entrance animation, scale on press
+
+    User->>Card: tap card
+    Card->>Card: handlePressIn / handlePressOut (scale anim)
+    Card->>Parent: handlePress() — navigates to video or custom onPress
+
+---
+%% 3. VIDEO CARD HORIZONTAL LAYOUT — Horizontal list (e.g. channel Videos tab)
+sequenceDiagram
+    autonumber
+    participant Parent
+    participant HLayout as VideoCardHorizontalLayout
+
+    Parent->>HLayout: children or list of video cards
+    HLayout->>HLayout: ScrollView horizontal
+    HLayout->>HLayout: render VideoCardLayout items (or passed children)
+
+    User->>HLayout: scroll horizontally, tap a card
+    HLayout->>Parent: onPress / navigateToVideo (per card)

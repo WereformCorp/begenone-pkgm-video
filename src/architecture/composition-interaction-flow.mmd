@@ -1,0 +1,21 @@
+sequenceDiagram
+    autonumber
+    participant Parent as Parent (e.g. VideoPlayingScreen)
+    participant VVL as VideoViewLayout
+    participant Shared as pkgm-shared (CustomizedTitle, MenuInteraction, MenuChannelMeta)
+    participant VideoCard as VideoCardLayout
+
+    Parent->>VVL: props (title, description, meta, suggestedVideos, onLike, onShare, onComment, commentSheetVisible, comments, renderCommentItem, ...)
+
+    VVL->>VVL: videoList = suggestedVideos?.videos ?? []
+
+    VVL->>Shared: CustomizedTitle (title, description)
+    VVL->>Shared: MenuInteraction (like, dislike, share, comment, repost, commentSheetVisible, comments, renderCommentItem)
+    VVL->>Shared: MenuChannelMeta (timeAgo, views, userName, subCount, channelLogo, navigateToChannel)
+    VVL->>VideoCard: map videoList → VideoCardLayout (titleText, userNameText, contentThumbUrl, onPress/navigateToVideo)
+
+    User->>Shared: tap Like / Dislike / Share / Comment / Repost
+    Shared->>Parent: onLike() / onDislike() / onShare() / onComment() / onRepost()
+
+    User->>VideoCard: tap card
+    VideoCard->>Parent: onPress(video) / navigateToVideo(video._id)

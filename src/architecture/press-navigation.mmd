@@ -1,0 +1,13 @@
+sequenceDiagram
+    autonumber
+    participant Parent
+    participant Card as VideoCardLayout
+
+    Parent->>Card: props (titleText, userNameText, contentThumbUrl, channelLogo, timeAgo, viewsText, onPress, navigateToVideo)
+
+    Card->>Card: handlePress = onPress ?? navigateToVideo
+    Card->>Card: entrance animation, scale on press
+
+    User->>Card: tap card
+    Card->>Card: handlePressIn / handlePressOut (scale anim)
+    Card->>Parent: handlePress() — navigates to video or custom onPress

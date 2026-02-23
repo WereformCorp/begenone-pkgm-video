@@ -1,0 +1,11 @@
+sequenceDiagram
+    autonumber
+    participant Parent
+    participant HLayout as VideoCardHorizontalLayout
+
+    Parent->>HLayout: children or list of video cards
+    HLayout->>HLayout: ScrollView horizontal
+    HLayout->>HLayout: render VideoCardLayout items (or passed children)
+
+    User->>HLayout: scroll horizontally, tap a card
+    HLayout->>Parent: onPress / navigateToVideo (per card)

@@ -58,6 +58,11 @@ export function VideoViewLayout({
   navigateToChannel,
   channelId,
 
+  menuChannelMetaIsSubscribed,
+  menuChannelMetaCanSubscribe,
+  menuChannelMetaSubscribePending,
+  onMenuChannelMetaToggleSubscribe,
+
   commentSheetVisible,
   onCloseCommentSheet,
   comments = [],
@@ -127,6 +132,10 @@ export function VideoViewLayout({
         subscribersCount={MenuChannelMetaSubCount}
         channelLogo={MenuChannelMetaChannelLogo}
         onChannelPress={navigateToChannel && channelId ? () => navigateToChannel(channelId) : undefined}
+        isSubscribed={menuChannelMetaIsSubscribed}
+        canSubscribe={menuChannelMetaCanSubscribe}
+        subscribePending={menuChannelMetaSubscribePending}
+        onToggleSubscribe={onMenuChannelMetaToggleSubscribe}
         containerStyles={{
           marginTop: 12,
         }}
